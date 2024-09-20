@@ -1,18 +1,24 @@
-import React from 'react';
+import React from 'react';  
+import { BrowserRouter, Routes, Route} from 'react-router-dom'
+import Connect_to_twitter from "./Pages/Connect_to_twitter"
+import TwitterCallback from "./Pages/TwitterCallback"
 
 function App() {
-  const handleTwitterLogin = () => {
-    // Redirect to the backend route that starts the Twitter OAuth process
-    window.location.href = 'http://localhost:5000/connect-to-twitter';
-  };
-
+  
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <button onClick={handleTwitterLogin} style={{ padding: '10px 20px', fontSize: '16px' }}>
-        Connect to Twitter
-      </button>
-    </div>
-  );
+    <>
+    
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Connect_to_twitter />} />
+          <Route path="/redirect" element={<TwitterCallback />} />
+      </Routes>
+    </BrowserRouter>
+    </>
+    
+  )
 }
 
+
 export default App;
+
